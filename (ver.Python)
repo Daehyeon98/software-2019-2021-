@@ -1,1 +1,119 @@
-#Python
+# Python 언어 버전
+# 패키지 로드 및 엑셀 파일 로드
+import pandas as pd
+import matplotlib.pyplot as plt
+plt.rcParams["font.family"] = "NanumGothic"
+software = pd.read_csv('C:/Study/Data/SW기술자_평균임금.csv', encoding='euc-kr') # 메인 데이터 불러오기
+software
+
+# 항목이 매우 많아 19년, 20년, 21년 총 3개로 구분하여 각자 작업
+# slicing
+#2019-1년
+software2019_1 = software.iloc[:15, :2]
+software2019_1
+# 2019-2년
+software2019_2 = software.iloc[15:, :2]
+software2019_2
+# 2020-1년
+software2020_1 = software.loc[:14, ['직무별', '2020년']]
+software2020_1
+# 2020-2년
+software2020_2 = software.loc[15:, ['직무별', '2020년']]
+software2020_2
+# 2021-1년
+software2021_1 = software.loc[:14, ['직무별', '2021년']]
+software2021_1
+# 2021-2년
+software2021_2 = software.loc[15:, ['직무별', '2021년']]
+software2021_2
+
+# 막대그래프 출력
+#2019-1년
+import seaborn as sns  
+plt.figure(figsize=(30, 13)) # 크기
+colors = sns.color_palette('hls',len(software2019_1)) # color 설정
+sw2019_1 = plt.bar(software2019_1['직무별'], software2019_1['2019년'], color=colors) # 막대그래프
+for rect in sw2019_1: # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2019년',fontsize=25, labelpad=20) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25, labelpad=20) # y축 제목
+job_list = software2019_1
+plt.legend(handles=sw2019_1,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+sw2019_1 # 출력
+
+#2019-2년
+import seaborn as sns
+plt.figure(figsize=(30, 13))
+colors = sns.color_palette('hls',len(software2019_2)) # color 설정
+sw2019_2 = plt.bar(software2019_2['직무별'], software2019_2['2019년'], color=colors) # 막대그래프
+for rect in sw2019_2:
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2019년',fontsize=25) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25) # y축 제목
+job_list = software2019_2
+plt.legend(handles=sw2019_2,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) ## 범례
+sw2019_2
+
+#2020-1년
+import seaborn as sns
+plt.figure(figsize=(30,13))
+colors = sns.color_palette('hls',len(software2019_1)) # color 설정
+sw2020_1 = plt.bar(software2020_1['직무별'], software2020_1['2020년'], color=colors) # 막대그래프
+for rect in sw2020_1:  # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2020년',fontsize=25) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25) # y축 제목
+job_list = software2020_1
+plt.legend(handles=sw2020_1,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+sw2020_1
+
+#2020-2년
+import seaborn as sns
+plt.figure(figsize=(30, 13))
+colors = sns.color_palette('hls',len(software2019_1)) # color 설정
+sw2020_2 = plt.bar(software2020_2['직무별'], software2020_2['2020년'], color=colors) # 막대그래프
+for rect in sw2020_2:    # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2020년',fontsize=25) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25) # y축 
+job_list = software2020_2
+plt.legend(handles=sw2020_2,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+sw2020_2
+
+#2021-1년
+import seaborn as sns
+plt.figure(figsize=(30, 13))
+colors = sns.color_palette('hls',len(software2019_1)) # color 설정
+sw2021_1 = plt.bar(software2021_1['직무별'], software2021_1['2021년'], color=colors) # 막대그래프
+for rect in sw2021_1:     # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2021년',fontsize=25) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25) # y축 제목
+job_list = software2021_1
+plt.legend(handles=sw2021_1,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+sw2021_1
+
+#2021-2년
+import seaborn as sns
+plt.figure(figsize=(30, 13))
+colors = sns.color_palette('hls',len(software2019_1)) # color 설정
+sw2021_2 = plt.bar(software2021_2['직무별'], software2021_2['2021년'], color=colors) # 막대그래프
+for rect in sw2021_2:     # 데이터레이블
+    height = rect.get_height()
+    plt.text(rect.get_x() + rect.get_width()/2.0, height, '%.2f' % height, ha='center',va='bottom', size = 20)
+plt.title('sw기술자 평균임금', fontsize=25) # title
+plt.xlabel('2021년',fontsize=25) # x축 제목
+plt.ylabel('단위 : 만원', fontsize=25) # y축 제목
+job_list = software2021_2
+plt.legend(handles=sw2021_2,labels=list(job_list['직무별']), loc='upper left', bbox_to_anchor=(1, 1), fontsize=17) # 범례
+sw2021_2
