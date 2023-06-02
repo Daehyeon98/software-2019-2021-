@@ -1,4 +1,4 @@
-# software-2019-2021-
+# software-engineer-average-salary
 해당 파일은 소프트웨어 평균 임금(2019~2021년) 자료를 바탕으로 데이터 시각화 작업을 한 코드입니다.
 
 언어는 R과 Python을 사용하였습니다.
