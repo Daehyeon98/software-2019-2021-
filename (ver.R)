@@ -1,0 +1,38 @@
+# R 언어 버전
+# 패키지 설치 및 로드
+install.packages('readxl')
+library(readxl)
+# 엑셀 파일 로드 및 확인
+software <- read.csv("C:/Study/Data/SW기술자_평균임금.csv", fileEncoding = "euc-kr")
+software2019 <- software[,c("직무별", "X2019년")]
+View(software2019)
+# 데이터 레이블에서 원하는 항목만을 추출
+software2020 <- software[,c("직무별", "X2020년")] 
+software2021 <- software[,c("직무별", "X2021년")]
+View(software2020)
+View(software2021)
+
+# 막대그래프 데이터레이블 넣는 준비
+# 항목이 매우 많아 19년, 20년, 21년 총 3개로 구분하여 따로 작업
+sw2019=software2019$X2019년
+sw2020=software2020$X2020년
+sw2021=software2021$X2021년
+mat2019=matrix(sw2019, nrow = 29)
+mat2020=matrix(sw2020, nrow = 29)
+mat2021=matrix(sw2021, nrow = 29)
+
+#막대그래프 출력
+# 2019년
+soft2019=barplot(mat2019, as.matrix(software2019[1:29, 2:2]), main=paste("SW 기술자 평균임금(2019~2021)"), xlab="2019년", ylab="단위 : 만원", beside=T, col=rainbow(29), ylim=c(0, 100),cex.main=1.5,cex.lab=1.5)
+text(x=soft2019, y=mat2019, labels = mat2019, pos=1, col="black")
+legend("topright", legend=c(software2019$직무별), fill=c(rainbow(29)), cex=0.5)
+
+# 2020년
+soft2020=barplot(mat2020, as.matrix(software2020[1:29, 2:2]), main=paste("SW 기술자 평균임금(2019~2021)"), xlab="2020년", ylab="단위 : 만원", beside=T, col=rainbow(29), ylim=c(0, 100),cex.main=1.5,cex.lab=1.5)
+text(x=soft2020, y=mat2020, labels = mat2020, pos=1, col="black")
+legend("topright", legend=c(software2020$직무별), fill=c(rainbow(29)), cex=0.5)
+       
+# 2021년
+soft2021=barplot(mat2021, as.matrix(software2021[1:29, 2:2]), main=paste("SW 기술자 평균임금(2019~2021)"), xlab="2021년", ylab="단위 : 만원", beside=T, col=rainbow(29), ylim=c(0, 100),cex.main=1.5,cex.lab=1.5)
+text(x=soft2021, y=mat2021, labels = mat2021, pos=1, col="black")
+legend("topright", legend=c(software2021$직무별), fill=c(rainbow(29)), cex=0.5)
